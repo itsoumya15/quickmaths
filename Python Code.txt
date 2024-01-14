@@ -1,0 +1,60 @@
+import random
+
+def generate_question():
+    num1 = random.randint(1, 10)
+    num2 = random.randint(1, 10)
+    return num1, num2
+
+def check_answer(num1, num2, user_answer):
+    correct_answer = num1 + num2
+    return user_answer == correct_answer
+
+def play_game():
+    score = 0
+    num_questions = 5
+
+    for _ in range(num_questions):
+        num1, num2 = generate_question()
+        question = f"What is {num1} + {num2}? "
+        user_answer = int(input(question))
+
+        if check_answer(num1, num2, user_answer):
+            print("Correct!")
+            score += 1
+        else:
+            print("Incorrect!")
+
+    print(f"Game Over! Your score is {score}/{num_questions}")
+
+play_game()
+
+
+import random
+
+def generate_question():
+    num1 = random.randint(1, 10)
+    num2 = random.randint(1, 10)
+    operator = random.choice(['+', '-'])
+    question = f"{num1} {operator} {num2}"
+    answer = eval(question)  # Using eval to calculate the correct answer
+    return question, answer
+
+def play_game():
+    score = 0
+    rounds = 5
+
+    for _ in range(rounds):
+        question, correct_answer = generate_question()
+        user_answer = int(input(f"What is {question}? "))
+
+        if user_answer == correct_answer:
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Wrong! The correct answer is {correct_answer}.")
+
+    print(f"Game over. Your score is {score}/{rounds}.")
+
+if __name__ == "__main__":
+    print("Welcome to the Math Game!")
+ play_game()
